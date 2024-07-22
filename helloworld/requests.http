@@ -1,0 +1,5 @@
+@server = http://localhost:4004/odata/v4
+
+### Print Hello World
+
+GET {{server}}/say/hello(to='world')
