@@ -1,0 +1,30 @@
+@server = http://localhost:4004/odata/v4 
+ 
+### Get all books 
+GET {{server}}/catalog/Books 
+ 
+### Get all authors 
+GET {{server}}/catalog/Authors 
+ 
+### Create new author 
+POST {{server}}/catalog/Authors 
+Content-Type: application/json 
+
+{ 
+ "ID": 201, 
+ "dateOfBirth": "1564-04-26" 
+} 
+
+### Get totalStock 
+GET {{server}}/catalog/totalStock()
+Content-Type: application/json
+
+
+### Submit an order 
+POST {{server}}/catalog/submitOrder 
+Content-Type: application/json
+
+{ 
+    "book":207, 
+    "quantity":4 
+}

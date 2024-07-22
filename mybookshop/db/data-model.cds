@@ -12,7 +12,7 @@ entity Books : managed {
 
 entity Authors : managed {
     key ID          : Integer;
-        name        : String;
+        name        : String @mandatory;
         dateOfBirth : Date;
         books       : Association to many Books
                           on books.author = $self;

@@ -4,10 +4,16 @@ service CatalogService {
 
     entity Authors as projection on my.Authors;
 
-    @readonly
-    entity Books   as projection on my.Books {
-        *,
-        author.name as author_name
+    entity Books   as
+        projection on my.Books {
+            *,
+            author.name as author_name
+        };
+
+    function totalStock()                                     returns Integer;
+
+    action   submitOrder(book : Books:ID, quantity : Integer) returns {
+        stock : Integer
     };
 
 }
