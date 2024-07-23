@@ -40,4 +40,26 @@ class CatalogService extends cds.ApplicationService {
     }
 }
 
-module.exports = CatalogService
+class ExternalService extends cds.ApplicationService{
+    async init(){
+        const { API_BP } = this.entities;
+        const headers = {
+            'apikey' : "iAhyMIJtbRct0LHABiNLOTfiLNxL4Grt"
+        }
+        const externalAPI = await cds.connect.to('API_BUSINESS_PARTNERS');
+        //  this.on("READ",API_BP,async(req) =>{
+        //     console.log('getting data from APIHub S/4 Sandbox system');
+        //     console.log('getting data from APIHub S/4 Sandbox system');
+        //     const query = req.query;
+        //     console.log(query);
+        //      return externalAPI.send({query,headers})
+        //  })
+        // this.before("READ",API_BP,async(req) =>{
+        //     const result = await externalAPI.run(SELECT(API_BP).limit(100));
+        //     return result;
+        // })
+      await  super.init();
+    }
+}
+
+module.exports = {CatalogService,ExternalService}

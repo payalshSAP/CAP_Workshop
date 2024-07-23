@@ -57,5 +57,8 @@ Authorization: Basic user1@example.com:initial
      "quantity":4 
  }
 
+### GET Business Partner Entries
+
+GET {{server}}/external/API_BP
 
 
