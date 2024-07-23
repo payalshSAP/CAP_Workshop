@@ -1,0 +1,64 @@
+@server = http://localhost:4004/odata/v4
+
+### Get all books
+
+GET {{server}}/catalog/Books
+
+### Get all Authors
+GET {{server}}/catalog/Authors
+
+### Create a new Author
+POST {{server}}/catalog/Authors HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user2@example.com:initial
+
+{
+    "ID":1400,
+    "name":"Kim",
+    "dateOfBirth":"1564-04-26"
+}
+
+### create a new Book
+POST {{server}}/catalog/Books HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user1@example.com:initial
+
+{
+    "ID":284,
+    "stock":12,
+    "price":120
+}
+
+### Create a new Author with nationality
+POST {{server}}/catalog/Authors HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user1@example.com:initial
+
+{
+    "ID":208,
+    "name":"Charles Dickens",
+    "dateOfBirth":"1564-04-26",
+    "nationality":"US"
+}
+
+
+
+### Get totalStock 
+ GET {{server}}/catalog/totalStock()
+ Content-Type: application/json
+
+
+### Submit an order
+ POST {{server}}/catalog/submitOrder
+ Content-Type: application/json
+
+ {
+    "book":207, 
+     "quantity":4 
+ }
+
+### GET Business Partner Entries
+
+GET {{server}}/external/API_BP
+
+
