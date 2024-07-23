@@ -2,7 +2,7 @@ const cds = require('@sap/cds')
 
 class CatalogService extends cds.ApplicationService {
     async init() {
-        const { Books } = this.entities
+        const { Books ,Authors} = this.entities
 
         this.before('READ', Books, req => {
             console.log(req.path)
@@ -35,6 +35,17 @@ class CatalogService extends cds.ApplicationService {
             stock -= quantity
 
             return { stock }
+        })
+        this.before("CREATE",Authors,req =>{
+            const user = {
+                id : req.user.id,
+                _roles: req.user._roles,
+                attr : req.user.attr
+            }
+            if(req.data.nationality != user.attr.country){
+                console.log('Nationality does not match')
+                req.reject(403);
+            }
         })
 
         await super.init()

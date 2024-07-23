@@ -1,21 +1,28 @@
 {
-  "xsappname": "mybookshop",
-  "tenant-mode": "dedicated",
-  "description": "Security profile of called application",
   "scopes": [
     {
-      "name": "uaa.user",
-      "description": "UAA"
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin"
     }
   ],
+  "attributes": [],
   "role-templates": [
     {
-      "name": "Token_Exchange",
-      "description": "UAA",
+      "name": "Admin",
+      "description": "generated",
       "scope-references": [
-        "uaa.user"
-      ]
+        "$XSAPPNAME.Admin"
+      ],
+      "attribute-references": []
     }
   ],
-  "attributes": []
+  "role-collections": [
+    {
+    "name": "CatalogAdmin",
+    "description": "Administrator Role Collection",
+    "role-template-references": [
+      "$XSAPPNAME.Admin"
+        ]
+    }
+]
 }

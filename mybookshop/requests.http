@@ -6,13 +6,41 @@ GET {{server}}/catalog/Books
 ### Get all authors 
 GET {{server}}/catalog/Authors 
  
-### Create new author 
-POST {{server}}/catalog/Authors 
-Content-Type: application/json 
+### Get all Authors
+GET {{server}}/catalog/Authors
 
-{ 
- "ID": 201, 
- "dateOfBirth": "1564-04-26" 
+### Create a new Author
+POST {{server}}/catalog/Authors HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user2@example.com:initial
+
+{
+    "ID":1400,
+    "name":"Kim",
+    "dateOfBirth":"1564-04-26"
+}
+
+### create a new Book
+POST {{server}}/catalog/Books HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user1@example.com:initial
+
+{
+    "ID":284,
+    "stock":12,
+    "price":120
+}
+
+### Create a new Author with nationality
+POST {{server}}/catalog/Authors HTTP/1.1
+Content-Type: application/json
+Authorization: Basic user2@example.com:initial
+
+{
+    "ID":209,
+    "name":"Charles Dickens",
+    "dateOfBirth":"1564-04-26",
+    "nationality":"US"
 } 
 
 ### Get totalStock 
