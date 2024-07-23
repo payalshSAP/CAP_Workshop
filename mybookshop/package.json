@@ -16,7 +16,12 @@
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^3",
     "@sap/ux-specification": "^1.120.14",
+    "axios": "^1.7.2",
+    "chai": "^4.4.1",
+    "chai-as-promised": "^8.0.0",
+    "chai-subset": "^1.6.0",
     "eslint": "^9",
+    "jest": "^29.7.0",
     "rimraf": "^5.0.5"
   },
   "scripts": {

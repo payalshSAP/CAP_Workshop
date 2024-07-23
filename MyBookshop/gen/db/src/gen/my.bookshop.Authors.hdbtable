@@ -1,0 +1,13 @@
+COLUMN TABLE my_bookshop_Authors (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  ID INTEGER NOT NULL,
+  name NVARCHAR(5000),
+  dateOfBirth DATE,
+  nationality NVARCHAR(5000),
+  PRIMARY KEY(ID)
+) WITH ASSOCIATIONS (
+  MANY TO MANY JOIN my_bookshop_Books AS books ON (books.author_ID = ID)
+)

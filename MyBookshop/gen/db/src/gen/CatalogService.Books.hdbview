@@ -1,0 +1,14 @@
+VIEW CatalogService_Books AS SELECT
+  Books_0.createdAt,
+  Books_0.createdBy,
+  Books_0.modifiedAt,
+  Books_0.modifiedBy,
+  Books_0.ID,
+  Books_0.title,
+  Books_0.stock,
+  Books_0.price,
+  Books_0.author_ID
+FROM my_bookshop_Books AS Books_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_Authors AS author ON (author.ID = author_ID)
+)

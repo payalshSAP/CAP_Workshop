@@ -1,0 +1,14 @@
+COLUMN TABLE my_bookshop_Books (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  ID INTEGER NOT NULL,
+  title NVARCHAR(5000),
+  stock INTEGER,
+  price DECIMAL,
+  author_ID INTEGER,
+  PRIMARY KEY(ID)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN my_bookshop_Authors AS author ON (author.ID = author_ID)
+)
