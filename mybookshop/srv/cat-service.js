@@ -36,6 +36,38 @@ class CatalogService extends cds.ApplicationService {
 
             return { stock }
         })
+        this.on("checkStatus", async () => {
+            const workflowContent = {
+                "definitionId": "us10.e0e29c8atrial.capprocessautomation.cAP",
+                "context": {
+                    "bookid": "12",
+                    "authorname": "K. Robert"
+                }
+            };
+            const SPA_API = await cds.connect.to('processautomation');
+            const workflowResult = await SPA_API.send('POST', '/workflow/rest/v1/workflow-instances', JSON.stringify(workflowContent),
+                {
+                    "Content-Type": "application/json"
+                });
+            const result ={
+                status :workflowResult.status,
+                id: workflowResult.id
+            } 
+            return result;
+        })
+        this.on("cancelWorkflowInstance",async(req) =>{
+            const id = req.data.id;
+            const workflowContent = {
+                    "id": id,
+                    "deleted": true
+            };
+            const SPA_API = await cds.connect.to('processautomation');
+            const result = await SPA_API.send('PATCH', '/workflow/rest/v1/workflow-instances',
+             JSON.stringify(workflowContent),{
+                "Content-Type": "application/json"
+            });
+            return result.status;
+        })
 
         await super.init()
     }

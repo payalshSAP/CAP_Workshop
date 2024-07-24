@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.16.0",
+    "@sap-cloud-sdk/resilience": "^3.16.0",
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
     "@sap/xssec": "^3",
@@ -34,10 +36,16 @@
       "[production]": {
         "db": "hana",
         "auth": "xsuaa"
+      },
+      "processautomation": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "processautomation"
+        }
       }
-    }
-  },
-  "sapux": [
-    "app/bookshop_ui"
-  ]
+    },
+    "sapux": [
+      "app/bookshop_ui"
+    ]
+  }
 }
