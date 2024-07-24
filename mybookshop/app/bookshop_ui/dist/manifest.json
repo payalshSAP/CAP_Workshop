@@ -7,8 +7,8 @@
         "applicationVersion": {
             "version": "0.0.1"
         },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
+        "title": "MyBookshop",
+        "description": "A simple Bookshop Application",
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
@@ -22,6 +22,19 @@
                 "settings": {
                     "annotations": [],
                     "odataVersion": "4.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "Books-display": {
+                    "semanticObject": "Books",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
                 }
             }
         }
