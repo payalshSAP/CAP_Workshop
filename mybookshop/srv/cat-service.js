@@ -1,4 +1,4 @@
-const cds = require('@sap/cds')
+const cds = require('@sap/cds');
 
 class CatalogService extends cds.ApplicationService {
     async init() {
@@ -39,6 +39,26 @@ class CatalogService extends cds.ApplicationService {
 
         await super.init()
     }
+
+}
+class ExternalService extends cds.ApplicationService{
+    async init(){
+        const { API_BP } = this.entities;
+        const bupa = await cds.connect.to('API_BUSINESS_PARTNER');
+     //Try it with approach for mocked data
+        // this.on("READ",API_BP,async(req) =>{
+        //     return bupa.transaction(req).run(req.query);
+        // })
+        const headers ={
+            "APIKey":"iAhyMIJtbRct0LHABiNLOTfiLNxL4Grt"
+        }
+        this.
+        on("READ",API_BP,async(req) =>{
+            console.log('getting data from API Hub S/$ HANA system');
+            const query = req.query;
+            return bupa.send({query,headers})
+        })
+    }
 }
 
-module.exports = CatalogService
+module.exports = { CatalogService,ExternalService }

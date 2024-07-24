@@ -1,4 +1,5 @@
 using my.bookshop as my from '../db/data-model';
+using { API_BUSINESS_PARTNER as external_BP} from './external/API_BUSINESS_PARTNER';
 
 service CatalogService {
 
@@ -16,4 +17,11 @@ service CatalogService {
         stock : Integer
     };
 
+}
+service ExternalService {
+    entity API_BP as projection on external_BP.A_BusinessPartner{
+        BusinessPartner,Customer, Supplier, AcademicTitle, AuthorizationGroup,
+         BusinessPartnerCategory, BusinessPartnerFullName, BusinessPartnerGrouping, BusinessPartnerName
+
+    };
 }

@@ -28,3 +28,7 @@ Content-Type: application/json
     "book":207, 
     "quantity":4 
 }
+
+### READ an records from Business Partner API
+
+GET {{server}}/external/API_BP
