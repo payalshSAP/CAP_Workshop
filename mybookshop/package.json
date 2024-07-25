@@ -10,6 +10,7 @@
     "@sap-cloud-sdk/resilience": "^3.16.0",
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
+    "@sap/xb-msg-amqp-v100": "^0.9.58",
     "@sap/xssec": "^3",
     "express": "^4"
   },
@@ -42,6 +43,9 @@
         "credentials": {
           "destination": "processautomation"
         }
+      },
+      "messaging": {
+           "kind": "enterprise-messaging" 
       }
     },
     "sapux": [

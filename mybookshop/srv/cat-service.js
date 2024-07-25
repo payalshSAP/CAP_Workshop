@@ -3,6 +3,7 @@ const cds = require('@sap/cds')
 class CatalogService extends cds.ApplicationService {
     async init() {
         const { Books } = this.entities
+        const messaging = await cds.connect.to('messaging')
 
         this.before('READ', Books, req => {
             console.log(req.path)
@@ -68,6 +69,17 @@ class CatalogService extends cds.ApplicationService {
             });
             return result.status;
         })
+        this.on ('send', async(req)=>{
+            const message = { 
+              'myProp': 'Sending message. Current Time: ' + new Date().toLocaleString()
+            }
+          
+            const topic = 'sap/bookshop/test/demo/books/created'
+          
+            messaging.emit (topic, message)  
+        
+            return "Successfully sent event"
+          })
 
         await super.init()
     }
