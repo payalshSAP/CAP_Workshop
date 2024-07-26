@@ -15,7 +15,6 @@ service CatalogService {
     }
     function totalStock()                                     returns Integer;
     function checkStatus()                                    returns workflow;
-    action cancelWorkflowInstance(id: workflow:id)             returns String;
 
     action   submitOrder(book : Books:ID, quantity : Integer) returns {
         stock : Integer

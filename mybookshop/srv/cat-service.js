@@ -55,19 +55,6 @@ class CatalogService extends cds.ApplicationService {
             } 
             return result;
         })
-        this.on("cancelWorkflowInstance",async(req) =>{
-            const id = req.data.id;
-            const workflowContent = {
-                    "id": id,
-                    "deleted": true
-            };
-            const SPA_API = await cds.connect.to('processautomation');
-            const result = await SPA_API.send('PATCH', '/workflow/rest/v1/workflow-instances',
-             JSON.stringify(workflowContent),{
-                "Content-Type": "application/json"
-            });
-            return result.status;
-        })
 
         await super.init()
     }

@@ -33,11 +33,3 @@ Content-Type: application/json
 ### Get workflow instances
 GET {{server}}/catalog/checkStatus()
 
-### Delete Workflow Instance
-
-POST {{server}}/catalog/cancelWorkflowInstance
-Content-Type: application/json
-
-{ 
-    "id":"645dd5d4-495a-11ef-b654-eeee0a90a22"
-}
